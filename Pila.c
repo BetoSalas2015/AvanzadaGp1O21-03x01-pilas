@@ -2,28 +2,18 @@
 
 #include <stdio.h>				//   Para la I/O del programa (entrada / Salida)
 #include <stdlib.h>				//  Para las funcionesde utilería P.E. system();
+#include <string.h>
 #include "Pila.h"
 
+// Programe sus funciones aquí
 
 int main()
 {
-	nodo *tope = NULL;
-	char dato;
+	char cadena[50];
+	//printf("Dame la expresión a evaluar: ");
+	//gets(cadena);
+	strcpy(cadena, "((A+B)*C)");
 
-	tope = push(tope, 'R');
-	tope = push(tope, 'o');
-	tope = push(tope, 'b');
-	tope = push(tope, 'e');
-	tope = push(tope, 'r');
-	tope = push(tope, 't');
-	tope = push(tope, 'o');
-
-	imprimePila(tope);
-
-	tope = pop(tope, &dato);
-	printf("El ddato que salió fue %c\n", dato);
-	imprimePila(tope);
-	
 	system("pause");
 	return 1;
 }

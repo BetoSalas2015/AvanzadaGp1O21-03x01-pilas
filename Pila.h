@@ -14,6 +14,8 @@ void imprimePila(nodo *raiz);
 nodo *pop(nodo *raiz, char *dato);
 nodo *stackTop(nodo *tope, char *dato);
 int isEmpty(nodo *tope);
+int profundidad(char expresion[]);
+
 
 nodo *push(nodo *raiz, char dato)		
 {
@@ -72,7 +74,7 @@ nodo *pop(nodo *raiz, char *dato)
 
 nodo *stackTop(nodo *tope, char *dato)
 {
-	if( isEmpty(tope) )
+	if( !isEmpty(tope) )
 	{
 		*dato = tope -> info;
 		return tope;
