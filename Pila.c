@@ -6,6 +6,9 @@
 #include "Pila.h"
 
 // Programe sus funciones aquí
+int profundidad(char expresion[])
+{
+}
 
 int main()
 {

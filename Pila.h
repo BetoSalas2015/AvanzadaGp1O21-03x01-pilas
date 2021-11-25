@@ -11,8 +11,8 @@ typedef struct Nodo nodo;
 //  Prototipos
 nodo *push(nodo *raiz, char dato);
 void imprimePila(nodo *raiz);
-nodo *pop(nodo *raiz, char *dato);
-nodo *stackTop(nodo *tope, char *dato);
+nodo *pop(nodo *raiz, char *dato);                                                
+char stackTop(nodo *tope);
 int isEmpty(nodo *tope);
 int profundidad(char expresion[]);
 
@@ -72,12 +72,13 @@ nodo *pop(nodo *raiz, char *dato)
 	}
 }
 
-nodo *stackTop(nodo *tope, char *dato)
-{
+char stackTop(nodo *tope)
+{   
+	char dato
 	if( !isEmpty(tope) )
 	{
-		*dato = tope -> info;
-		return tope;
+		dato = tope -> info;
+		return dato;
 	} 
 	else
 	{
@@ -87,7 +88,7 @@ nodo *stackTop(nodo *tope, char *dato)
 	}
 }
 
-int isEmpty(nodo *tope)
+int isEmpty(nodo *tope)			//   if(,prec (stackTop(pila), symb))
 {
 	if(tope == NULL)	//  La pila está vacía?
 		return 1;		//  Si, está vacía
