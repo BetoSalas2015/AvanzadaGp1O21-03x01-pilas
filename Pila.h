@@ -1,23 +1,31 @@
 #include <malloc.h>				//  Para la asignación (memory allocation) dinamica de memoria
 
+union Datos
+{
+	char car;
+	float num;
+};
+
+typedef union Datos datos;		//  cubeta == datos
+
 struct Nodo 
 { 
-	char info; 
+	union Datos info; 
 	struct Nodo *sig; 
 };
 
 typedef struct Nodo nodo;
 
 //  Prototipos
-nodo *push(nodo *raiz, char dato);
+nodo *push(nodo *raiz, datos dato);
 void imprimePila(nodo *raiz);
-nodo *pop(nodo *raiz, char *dato);                                                
-char stackTop(nodo *tope);
+nodo *pop(nodo *raiz, datos *dato);                                                
+datos stackTop(nodo *tope);
 int isEmpty(nodo *tope);
 int profundidad(char expresion[]);
 
 
-nodo *push(nodo *raiz, char dato)		
+nodo *push(nodo *raiz, datos dato)		
 {
 	nodo *nuevo = NULL;			// Apuntador auxiliar para crear el nuevo nodo
 	nuevo = (nodo *) malloc( sizeof(nodo) );  // Creamos el nuevo nodo
@@ -47,13 +55,13 @@ void imprimePila(nodo *raiz)
 	nodo *recorre = raiz;
 	while( recorre != NULL)		//  ¿Es el ultimo nodo?
 	{							//  Verdadero: no es el ultimo nodo
-		printf("%c, ", recorre->info);
+		printf("%c - %5.2f, ", recorre->info, recorre->info);
 		 recorre = recorre -> sig;	// Avanzo al diguiente nodo...
 	}
 	putchar('\n');
 }
 
-nodo *pop(nodo *raiz, char *dato)
+nodo *pop(nodo *raiz, datos *dato)
 {
 	if(raiz != NULL)
 	{
@@ -72,9 +80,9 @@ nodo *pop(nodo *raiz, char *dato)
 	}
 }
 
-char stackTop(nodo *tope)
+datos stackTop(nodo *tope)
 {   
-	char dato
+	datos dato;
 	if( !isEmpty(tope) )
 	{
 		dato = tope -> info;
@@ -84,7 +92,7 @@ char stackTop(nodo *tope)
 	{
 		printf("Error - UnderFlow: No hay elementos en la lista. \n"); //  Error: Underflow!
 		system("Pause");
-		return NULL;   
+		return;   
 	}
 }
 
